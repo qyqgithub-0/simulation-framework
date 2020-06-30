@@ -1,8 +1,8 @@
-package com.beans.impl;
+package com.bean.impl;
 
-import com.beans.BeanDefinition;
-import com.beans.BeanFactory;
-import com.beans.BeanRegister;
+import com.bean.BeanDefinition;
+import com.bean.BeanDefinitionRegister;
+import com.bean.ConfigurableListableBeanFactory;
 import com.exception.extension.BeansException;
 import com.exception.extension.NoSuchBeanDefinitionException;
 import com.util.Assert;
@@ -12,20 +12,20 @@ import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * 默认工厂实现(单例模式，线程安全)
+ * 默认工厂实现(单例模式，线程安全)，也是Spring的最终创建的工厂对象
  * @author rkc
  * @version 1.0
  * @date 2020/6/29 16:01
  */
-public class DefaultBeanFactory implements BeanFactory, BeanRegister {
+public class DefaultListableBeanDefinitionFactory implements ConfigurableListableBeanFactory, BeanDefinitionRegister {
 
-    private static volatile DefaultBeanDefinition beanFactory;
+    private static volatile DefaultListableBeanDefinitionFactory beanFactory;
     private final Map<String, BeanDefinition> beanDefinitionMap = new ConcurrentHashMap<String, BeanDefinition>(256);
     private final Map<String, String> aliasesDefinitionMap = new ConcurrentHashMap<String, String>(256);
     private final Map<String, Class<?>> typeDefinitionMap = new ConcurrentHashMap<String, Class<?>>(256);
     private final Map<Class<?>, Object> resolvableDependencies = new ConcurrentHashMap<Class<?>, Object>(256);
 
-    private DefaultBeanFactory() {
+    private DefaultListableBeanDefinitionFactory() {
     }
 
     @Override
@@ -88,32 +88,32 @@ public class DefaultBeanFactory implements BeanFactory, BeanRegister {
     }
 
     @Override
-    public void registerBeanDefinition(String name, DefaultBeanDefinition defaultBeanDefinition) {
+    public void registerBeanDefinition(String name, BeanDefinition beanDefinition) {
         Assert.notNull(name, "'beanName' must not be null");
-        register(defaultBeanDefinition.getAliasesName(), defaultBeanDefinition);
+        register(beanDefinition.getAliasesName(), beanDefinition);
     }
 
     /**
      * 注册bean
      * @param aliases 名称
-     * @param defaultBeanDefinition 被注册的bean对应的BeanDefinition
+     * @param beanDefinition 被注册的bean对应的BeanDefinition
      */
-    private void register(String aliases, DefaultBeanDefinition defaultBeanDefinition) {
-        final String name = defaultBeanDefinition.getBean().getClass().getName();
+    private void register(String aliases, BeanDefinition beanDefinition) {
+        final String name = beanDefinition.getBean().getClass().getName();
         Object oldBean;
         if (containsBean(name)) {
             oldBean = beanDefinitionMap.get(name);
-            if (oldBean == defaultBeanDefinition) return;
+            if (oldBean == beanDefinition) return;
         }
 
         //加入到beanDefinitionMap中
-        beanDefinitionMap.put(aliases, defaultBeanDefinition);
+        beanDefinitionMap.put(aliases, beanDefinition);
         //根据BeanDefinition获取字节码
-        final Class<?> clazz = defaultBeanDefinition.getBean().getClass();
+        final Class<?> clazz = beanDefinition.getBean().getClass();
         //将相应的数据添加进入对应的容器
         typeDefinitionMap.put(name, clazz);
         aliasesDefinitionMap.put(name, aliases);
-        resolvableDependencies.put(clazz, defaultBeanDefinition.getBean());
+        resolvableDependencies.put(clazz, beanDefinition.getBean());
     }
 
     @Override
@@ -132,11 +132,11 @@ public class DefaultBeanFactory implements BeanFactory, BeanRegister {
      * 对外提供一个获取该工厂的接口
      * @return DefaultBeanDefinition
      */
-    public static DefaultBeanDefinition getInstance() {
+    public static DefaultListableBeanDefinitionFactory getInstance() {
         if (beanFactory == null) {
             synchronized (DefaultBeanDefinition.class) {
                 if (beanFactory == null) {
-                    beanFactory = new DefaultBeanDefinition();
+                    beanFactory = new DefaultListableBeanDefinitionFactory();
                 }
             }
         }

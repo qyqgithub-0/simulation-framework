@@ -1,6 +1,6 @@
-package com.beans.impl;
+package com.bean.impl;
 
-import com.beans.BeanDefinition;
+import com.bean.BeanDefinition;
 import com.exception.extension.BeansException;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -29,7 +29,7 @@ public class DefaultBeanDefinition implements BeanDefinition {
      * @param aliasesName 别名
      * @param clazz 字节码
      */
-    public DefaultBeanDefinition(String aliasesName, Class clazz) {
+    public DefaultBeanDefinition(String aliasesName, Class<?> clazz) {
         this.aliasesName = aliasesName;
         try {
             final Object obj = clazz.getDeclaredConstructor().newInstance();

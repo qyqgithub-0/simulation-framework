@@ -1,4 +1,4 @@
-package com.beans;
+package com.bean;
 
 import com.exception.extension.BeansException;
 import com.exception.extension.NoSuchBeanDefinitionException;

@@ -1,6 +1,6 @@
 package com.context;
 
-import com.beans.BeanFactory;
+import com.bean.BeanFactory;
 
 /**
  * @author rkc

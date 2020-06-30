@@ -1,20 +1,20 @@
-package com.beans;
+package com.bean;
 
-import com.beans.impl.DefaultBeanDefinition;
+import com.bean.impl.DefaultBeanDefinition;
 
 /**
  * @author rkc
  * @version 1.0
  * @date 2020/6/29 15:56
  */
-public interface BeanRegister {
+public interface BeanDefinitionRegister {
 
     /**
      * bean注册
      * @param name
      * @param defaultBeanDefinition
      */
-    void registerBeanDefinition(String name, DefaultBeanDefinition defaultBeanDefinition);
+    void registerBeanDefinition(String name, BeanDefinition defaultBeanDefinition);
 
     /**
      * bean注册

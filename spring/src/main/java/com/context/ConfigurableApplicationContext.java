@@ -1,6 +1,6 @@
 package com.context;
 
-import com.beans.BeanFactory;
+import com.bean.ConfigurableListableBeanFactory;
 import com.exception.extension.BeansException;
 
 /**
@@ -14,7 +14,7 @@ public interface ConfigurableApplicationContext extends Lifecycle, ApplicationCo
      * 获取BeanFactory的实现类
      * @return
      */
-    BeanFactory getBeanFactory();
+    ConfigurableListableBeanFactory getBeanFactory();
 
     /**
      * 加载或者刷新配置文件，配置文件也许是xml、properties或者其他的文件

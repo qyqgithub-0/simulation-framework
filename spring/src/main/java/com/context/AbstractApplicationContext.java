@@ -1,6 +1,7 @@
 package com.context;
 
-import com.beans.BeanFactory;
+import com.bean.BeanFactory;
+import com.bean.ConfigurableListableBeanFactory;
 import com.exception.extension.BeansException;
 import com.exception.extension.NoSuchBeanDefinitionException;
 
@@ -75,7 +76,7 @@ public abstract class AbstractApplicationContext implements ConfigurableApplicat
      * @throws IllegalStateException
      */
     @Override
-    public abstract BeanFactory getBeanFactory() throws IllegalStateException;
+    public abstract ConfigurableListableBeanFactory getBeanFactory() throws IllegalStateException;
 
     /**
      * 刷新或者加载配置文件
@@ -86,7 +87,7 @@ public abstract class AbstractApplicationContext implements ConfigurableApplicat
     public void refresh() throws BeansException, IllegalStateException {
         synchronized (this.startupShutdownMonitor) {
             prepareRefresh();
-            ConfigurableApplicationContext beanFactory = obtainFreshBeanFactory();
+            ConfigurableListableBeanFactory beanFactory = obtainFreshBeanFactory();
             finishBeanFactoryInitialization(beanFactory);
             finishRefresh();
         }
@@ -100,8 +101,12 @@ public abstract class AbstractApplicationContext implements ConfigurableApplicat
      * 获取或者刷新Bean工厂
      * @return
      */
-    protected ConfigurableApplicationContext obtainFreshBeanFactory() {
-        return null;
+    protected ConfigurableListableBeanFactory obtainFreshBeanFactory() {
+        //返回旧的BeanFactory(有的情况)，创建新的BeanFactory，加载Bean定义、注册Bean等等
+        refreshBeanFactory();
+
+        //返回刚刚创建的BeanFactory
+        return getBeanFactory();
     }
 
     protected void finishBeanFactoryInitialization(BeanFactory beanFactory) {
@@ -110,5 +115,11 @@ public abstract class AbstractApplicationContext implements ConfigurableApplicat
 
     protected void finishRefresh() {
 
+    }
+
+    protected abstract void refreshBeanFactory() throws BeansException, IllegalStateException;
+
+    protected void destroyBeans() {
+        //销毁
     }
 }
