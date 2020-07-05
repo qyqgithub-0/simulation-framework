@@ -1,5 +1,7 @@
 package com.bean;
 
+import com.exception.extension.BeansException;
+
 /**
  * 在Spring框架中，ConfigurableListableBeanFactory继承了
  * ListableBeanFactory, AutowireCapableBeanFactory, ConfigurableBeanFactory，
@@ -10,4 +12,7 @@ package com.bean;
  */
 public interface ConfigurableListableBeanFactory extends BeanFactory {
 
+    void freezeConfiguration();
+
+    void preInstantiateSingleton() throws BeansException;
 }

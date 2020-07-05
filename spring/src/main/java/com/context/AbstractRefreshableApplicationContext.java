@@ -1,7 +1,7 @@
 package com.context;
 
 import com.bean.ConfigurableListableBeanFactory;
-import com.bean.impl.DefaultListableBeanDefinitionFactory;
+import com.bean.factory.support.DefaultListableBeanFactory;
 import com.exception.extension.ApplicationContextException;
 import com.exception.extension.BeansException;
 
@@ -15,7 +15,7 @@ import java.io.IOException;
 public abstract class AbstractRefreshableApplicationContext extends AbstractApplicationContext {
 
     private final Object beanFactoryMonitor = new Object();
-    private DefaultListableBeanDefinitionFactory beanFactory;
+    private DefaultListableBeanFactory beanFactory;
 
     /**
      * 当前是否已经存在了一个BeanFactory
@@ -29,10 +29,10 @@ public abstract class AbstractRefreshableApplicationContext extends AbstractAppl
 
     /**
      * 创建一个bean工厂
-     * @return
+     * @return 工厂实例
      */
-    protected DefaultListableBeanDefinitionFactory createBeanFactory() {
-        return DefaultListableBeanDefinitionFactory.getInstance();
+    protected DefaultListableBeanFactory createBeanFactory() {
+        return DefaultListableBeanFactory.getInstance();
     }
 
     /**
@@ -63,7 +63,7 @@ public abstract class AbstractRefreshableApplicationContext extends AbstractAppl
         }
         try {
             //初始化一个DefaultListableBeanFactory
-            DefaultListableBeanDefinitionFactory beanFactory = createBeanFactory();
+            DefaultListableBeanFactory beanFactory = createBeanFactory();
             //下面是很重要的两个方法，是否允许覆盖
             customizeBeanFactory(beanFactory);
             //加载BeanDefinition到BeanFactory
@@ -82,7 +82,7 @@ public abstract class AbstractRefreshableApplicationContext extends AbstractAppl
      * 是否允许循环覆盖，是否允许循环引用
      * @param beanFactory
      */
-    protected void customizeBeanFactory(DefaultListableBeanDefinitionFactory beanFactory) {
+    protected void customizeBeanFactory(DefaultListableBeanFactory beanFactory) {
 
     }
 
@@ -92,5 +92,5 @@ public abstract class AbstractRefreshableApplicationContext extends AbstractAppl
      * @throws BeansException
      * @throws IOException
      */
-    protected abstract void loadBeanDefinition(DefaultListableBeanDefinitionFactory beanFactory) throws BeansException, IOException;
+    protected abstract void loadBeanDefinition(DefaultListableBeanFactory beanFactory) throws BeansException, IOException;
 }

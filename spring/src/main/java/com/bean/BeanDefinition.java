@@ -7,21 +7,21 @@ package com.bean;
  */
 public interface BeanDefinition {
 
-    /**
-     * 获取bean
-     * @return
-     */
     Object getBean();
 
-    /**
-     * 获取别名
-     * @return
-     */
-    String getAliasesName();
-
-    /**
-     * 是否是单例
-     * @return
-     */
     boolean isSingleton();
+
+    void setBeanClassName(String beanClassName);
+
+    String getBeanClassName();
+
+    void setScope(String scope);
+
+    String getScope();
+
+    MutablePropertyValues getPropertyValues();
+
+    default boolean hasPropertyValues() {
+        return !getPropertyValues().isEmpty();
+    }
 }

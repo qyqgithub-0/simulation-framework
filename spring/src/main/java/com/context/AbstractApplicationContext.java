@@ -87,8 +87,11 @@ public abstract class AbstractApplicationContext implements ConfigurableApplicat
     public void refresh() throws BeansException, IllegalStateException {
         synchronized (this.startupShutdownMonitor) {
             prepareRefresh();
+            //IoC重点，创建容器以及注册BeanDefinition，核心就是一个BeanDefinition的map
             ConfigurableListableBeanFactory beanFactory = obtainFreshBeanFactory();
+            //IoC重点，初始化所有singleton beans，懒加载的除外
             finishBeanFactoryInitialization(beanFactory);
+            //广播事件，ApplicationContext初始化完成
             finishRefresh();
         }
     }
@@ -109,8 +112,9 @@ public abstract class AbstractApplicationContext implements ConfigurableApplicat
         return getBeanFactory();
     }
 
-    protected void finishBeanFactoryInitialization(BeanFactory beanFactory) {
-
+    protected void finishBeanFactoryInitialization(ConfigurableListableBeanFactory beanFactory) {
+        beanFactory.freezeConfiguration();
+        beanFactory.preInstantiateSingleton();
     }
 
     protected void finishRefresh() {

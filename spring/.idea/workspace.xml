@@ -2,17 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="abe27894-123d-4662-abda-6d6a760bd116" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beans/BeanDefinition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bean/BeanDefinition.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beans/BeanFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bean/BeanFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beans/BeanRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bean/BeanDefinitionRegister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beans/impl/DefaultBeanDefinition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bean/impl/DefaultBeanDefinition.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beans/impl/DefaultBeanFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bean/impl/DefaultListableBeanDefinitionFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bean/BeanDefinition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bean/BeanDefinition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bean/BeanDefinitionRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bean/BeanDefinitionRegistry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bean/BeanFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bean/BeanFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bean/ConfigurableListableBeanFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bean/ConfigurableListableBeanFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bean/impl/DefaultBeanDefinition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bean/impl/GenericBeanDefinition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bean/impl/DefaultListableBeanDefinitionFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bean/factory/support/DefaultListableBeanFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bean/xml/XmlBeanDefinitionReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bean/xml/XmlBeanDefinitionReader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/context/AbstractApplicationContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/context/AbstractApplicationContext.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/context/ApplicationContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/context/ApplicationContext.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/context/ClassPathJsonApplicationContext.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/context/ClassPathXmlApplicationContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/context/ClassPathXmlApplicationContext.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/context/ConfigurableApplicationContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/context/ConfigurableApplicationContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/context/AbstractRefreshableApplicationContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/context/AbstractRefreshableApplicationContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/context/AbstractXmlApplicationContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/context/AbstractXmlApplicationContext.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/context/LifeCycle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/context/Lifecycle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/entity/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/entity/Student.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/test/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/test/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/util/BeanDefinitionUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/util/BeanDefinitionUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/applicationContext.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bean/BeanDefinition.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bean/BeanDefinition.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bean/BeanDefinitionRegister.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bean/ConfigurableListableBeanFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bean/ConfigurableListableBeanFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bean/impl/DefaultBeanDefinition.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bean/impl/DefaultListableBeanDefinitionFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bean/xml/XmlBeanDefinitionReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bean/xml/XmlBeanDefinitionReader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/context/AbstractApplicationContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/context/AbstractApplicationContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/context/AbstractRefreshableApplicationContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/context/AbstractRefreshableApplicationContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/context/AbstractXmlApplicationContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/context/AbstractXmlApplicationContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/test/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/test/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/util/BeanDefinitionUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/util/BeanDefinitionUtils.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +50,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="2" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -68,7 +87,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -105,6 +124,11 @@
       <workItem from="1593439247754" duration="4714000" />
       <workItem from="1593474834274" duration="9007000" />
       <workItem from="1593526108097" duration="2939000" />
+      <workItem from="1593606171568" duration="5388000" />
+      <workItem from="1593776486240" duration="5828000" />
+      <workItem from="1593821079170" duration="109000" />
+      <workItem from="1593821218371" duration="7594000" />
+      <workItem from="1593928775884" duration="15236000" />
     </task>
     <servers />
   </component>
@@ -116,80 +140,120 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="249" y="0" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1593476120949" />
-    <state x="574" y="128" width="813" height="568" key="#com.intellij.ide.util.MemberChooser" timestamp="1593527925321">
+    <state x="574" y="128" width="813" height="568" key="#com.intellij.ide.util.MemberChooser" timestamp="1593939238955">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="574" y="128" width="813" height="568" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1593527925321" />
-    <state x="370" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1593477539795">
+    <state x="574" y="128" width="813" height="568" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1593939238955" />
+    <state x="370" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1593825630650">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="370" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1593477539795" />
+    <state x="370" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1593825630650" />
     <state x="499" y="235" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1593416172897">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="235" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1536.824@0.0.1536.824" timestamp="1593416172897" />
-    <state width="573" height="618" key="DebuggerActiveHint" timestamp="1593528920497">
+    <state x="0" y="0" key="CommitChangelistDialog2" timestamp="1593951879070">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="573" height="618" key="DebuggerActiveHint/0.0.1536.824@0.0.1536.824" timestamp="1593528920497" />
-    <state width="1495" height="238" key="GridCell.Tab.0.bottom" timestamp="1593529054436">
+    <state x="0" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1593951879070" />
+    <state width="573" height="618" key="DebuggerActiveHint" timestamp="1593958205408">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1495" height="238" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1593529054436" />
-    <state width="1495" height="238" key="GridCell.Tab.0.center" timestamp="1593529054435">
+    <state width="573" height="618" key="DebuggerActiveHint/0.0.1536.824@0.0.1536.824" timestamp="1593958205408" />
+    <state x="93" y="93" width="1350" height="638" key="DiffContextDialog" timestamp="1593822324467">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1495" height="238" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1593529054435" />
-    <state width="1495" height="238" key="GridCell.Tab.0.left" timestamp="1593529054435">
+    <state x="93" y="93" width="1350" height="638" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1593822324467" />
+    <state x="535" y="114" key="FileChooserDialogImpl" timestamp="1593821174197">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1495" height="238" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1593529054435" />
-    <state width="1495" height="238" key="GridCell.Tab.0.right" timestamp="1593529054436">
+    <state x="535" y="114" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1593821174197" />
+    <state width="1495" height="201" key="GridCell.Tab.0.bottom" timestamp="1593959427733">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1495" height="238" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1593529054436" />
-    <state width="1495" height="314" key="GridCell.Tab.1.bottom" timestamp="1593529054433">
+    <state width="1495" height="201" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1593959427733" />
+    <state width="1495" height="201" key="GridCell.Tab.0.center" timestamp="1593959427733">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1495" height="314" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1593529054433" />
-    <state width="1495" height="314" key="GridCell.Tab.1.center" timestamp="1593529054433">
+    <state width="1495" height="201" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1593959427733" />
+    <state width="1495" height="201" key="GridCell.Tab.0.left" timestamp="1593959427733">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1495" height="314" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1593529054433" />
-    <state width="1495" height="314" key="GridCell.Tab.1.left" timestamp="1593529054432">
+    <state width="1495" height="201" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1593959427733" />
+    <state width="1495" height="201" key="GridCell.Tab.0.right" timestamp="1593959427733">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1495" height="314" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1593529054432" />
-    <state width="1495" height="314" key="GridCell.Tab.1.right" timestamp="1593529054433">
+    <state width="1495" height="201" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1593959427733" />
+    <state width="1495" height="349" key="GridCell.Tab.1.bottom" timestamp="1593959427730">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1495" height="314" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1593529054433" />
-    <state x="148" y="54" width="1047" height="712" key="SettingsEditor" timestamp="1593476277166">
+    <state width="1495" height="349" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1593959427730" />
+    <state width="1495" height="349" key="GridCell.Tab.1.center" timestamp="1593959427730">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="148" y="54" width="1047" height="712" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1593476277166" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1593425198099">
+    <state width="1495" height="349" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1593959427730" />
+    <state width="1495" height="349" key="GridCell.Tab.1.left" timestamp="1593959427730">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1593425198099" />
+    <state width="1495" height="349" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1593959427730" />
+    <state width="1495" height="349" key="GridCell.Tab.1.right" timestamp="1593959427730">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1495" height="349" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1593959427730" />
+    <state x="333" y="31" key="NewModule_or_Project.wizard" timestamp="1593821180409">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="333" y="31" key="NewModule_or_Project.wizard/0.0.1536.824@0.0.1536.824" timestamp="1593821180409" />
+    <state x="148" y="54" width="1047" height="712" key="SettingsEditor" timestamp="1593946851845">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="148" y="54" width="1047" height="712" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1593946851845" />
+    <state x="235" y="59" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1593611494800">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="235" y="59" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1536.824@0.0.1536.824" timestamp="1593611494800" />
+    <state x="2" y="0" key="new project wizard" timestamp="1593821228497">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="2" y="0" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1593821228497" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1593823985439">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1593823985439" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/context/AbstractApplicationContext.java</url>
-          <line>89</line>
-          <option name="timeStamp" value="2" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/test/Main.java</url>
+          <line>22</line>
+          <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/context/AbstractRefreshableApplicationContext.java</url>
-          <line>69</line>
-          <option name="timeStamp" value="3" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/bean/factory/support/DefaultListableBeanFactory.java</url>
+          <line>158</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/bean/factory/support/AbstractAutowireCapableBeanFactory.java</url>
+          <line>37</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/bean/xml/XmlBeanDefinitionReader.java</url>
+          <line>89</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/bean/factory/support/AbstractAutowireCapableBeanFactory.java</url>
+          <line>79</line>
+          <option name="timeStamp" value="20" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
+        <PinnedItemInfo typeName="java.util.concurrent.ConcurrentHashMap$MapEntry" fieldName="key" />
         <PinnedItemInfo typeName="com.bean.impl.DefaultListableBeanDefinitionFactory" fieldName="beanDefinitionMap" />
       </pinned-members>
     </pin-to-top-manager>

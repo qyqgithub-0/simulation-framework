@@ -1,8 +1,10 @@
 package com.bean.xml;
 
-import com.bean.BeanDefinitionRegister;
+import com.bean.BeanDefinitionRegistry;
+import com.bean.MutablePropertyValues;
+import com.bean.PropertyValue;
 import com.bean.impl.BeanDefinitionHolder;
-import com.bean.impl.DefaultBeanDefinition;
+import com.bean.impl.GenericBeanDefinition;
 import com.util.BeanDefinitionUtils;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
@@ -19,34 +21,27 @@ import java.util.List;
  */
 public class XmlBeanDefinitionReader {
 
-    private final BeanDefinitionRegister register;
+    private final BeanDefinitionRegistry register;
 
-    public XmlBeanDefinitionReader(BeanDefinitionRegister register) {
+    public XmlBeanDefinitionReader(BeanDefinitionRegistry register) {
         this.register = register;
     }
 
     /**
      * 传入一个配置文件的位置，解析bean标签将其信息存在BeanDefinition，并且存入BeanFactory中
-     * @param fileLocation
-     * @return
+     * @param fileLocation 配置文件路径
+     * @return bean的数量
      */
     public int doLoadBeanDefinitions(String fileLocation) throws DocumentException {
         try {
             //加载配置文件的Document
             Document doc = doLoadDocument(new File(fileLocation));
-            int count = registerBeanDefinitions(doc);
-            return count;
+            return registerBeanDefinitions(doc);
         } catch (DocumentException e) {
             throw e;
         }
     }
 
-    /**
-     * 获取配置文件的Document对象
-     * @param file 配置文件
-     * @return
-     * @throws DocumentException
-     */
     protected Document doLoadDocument(File file) throws DocumentException {
         SAXReader reader =  new SAXReader();
         return reader.read(file);
@@ -61,6 +56,7 @@ public class XmlBeanDefinitionReader {
         int count = 0;
         //获取根节点
         Element root = doc.getRootElement();
+        //获取所有的bean标签
         List<Element> elements = root.elements("bean");
         for (Element element : elements) {
             //获取class属性和id属性
@@ -70,26 +66,29 @@ public class XmlBeanDefinitionReader {
             } catch (ClassNotFoundException e) {
                 e.getCause();
             }
-//            String classAttr = element.attributeValue("class");
             String id = element.attributeValue("id");
+            String name = element.attributeValue("name");
+            String alias = element.attributeValue("alias");
+
+            MutablePropertyValues propertyValues = new MutablePropertyValues();
             //默认就是singleton
 //            String scope = element.attributeValue("scope") == null ? "singleton" : element.attributeValue("scope");
-//            System.out.println("---------------bean标签----------------");
-//            System.out.println("class属性：" + classAttr);
-//            System.out.println("id属性：" + id);
-//            System.out.println("scope属性：" + scope);
-//
-//            //读取bean标签下的property标签
-//            List<Element> propertyList = element.elements("property");
-//            for (Element property : propertyList) {
-//                String name = property.attributeValue("name");
-//                String value = property.attributeValue("value");
-//                System.out.println("property的name属性：" + name);
-//                System.out.println("property的value属性：" + value);
-//            }
-//            System.out.println("--------------------------------------");
+            System.out.println("---------------bean标签----------------");
+            //读取bean标签下的property标签
+            List<Element> propertyList = element.elements("property");
+            for (Element property : propertyList) {
+                String propName = property.attributeValue("name");
+                String value = property.attributeValue("value");
+                try {
+                    Integer intValue = Integer.valueOf(value);
+                    propertyValues.addPropertyValue(new PropertyValue(propName, intValue));
+                } catch (NumberFormatException e) {
+                    propertyValues.addPropertyValue(new PropertyValue(propName, value));
+                }
+            }
 
-            DefaultBeanDefinition beanDefinition = new DefaultBeanDefinition(id, clazz);
+            GenericBeanDefinition beanDefinition = new GenericBeanDefinition(id, name, alias, propertyValues);
+            beanDefinition.setBeanClass(clazz);
             BeanDefinitionHolder holder = new BeanDefinitionHolder(beanDefinition, id);
 
             BeanDefinitionUtils.registerBeanDefinition(holder, register);

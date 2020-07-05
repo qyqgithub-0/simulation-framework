@@ -1,6 +1,6 @@
 package com.context;
 
-import com.bean.impl.DefaultListableBeanDefinitionFactory;
+import com.bean.factory.support.DefaultListableBeanFactory;
 import com.bean.xml.XmlBeanDefinitionReader;
 import com.exception.extension.BeansException;
 import org.dom4j.DocumentException;
@@ -21,7 +21,7 @@ public abstract class AbstractXmlApplicationContext extends AbstractRefreshableC
      * @throws IOException
      */
     @Override
-    protected void loadBeanDefinition(DefaultListableBeanDefinitionFactory beanFactory) throws BeansException, IOException {
+    protected void loadBeanDefinition(DefaultListableBeanFactory beanFactory) throws BeansException, IOException {
         //--------------------------------------
         XmlBeanDefinitionReader xmlBeanDefinitionReader = new XmlBeanDefinitionReader(beanFactory);
         try {

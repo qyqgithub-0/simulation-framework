@@ -1,12 +1,17 @@
-package com.bean.impl;
+package com.bean.factory.support;
 
 import com.bean.BeanDefinition;
-import com.bean.BeanDefinitionRegister;
+import com.bean.BeanDefinitionRegistry;
+import com.bean.BeanFactory;
 import com.bean.ConfigurableListableBeanFactory;
+import com.bean.impl.GenericBeanDefinition;
+import com.bean.xml.AbstractBeanDefinition;
 import com.exception.extension.BeansException;
 import com.exception.extension.NoSuchBeanDefinitionException;
 import com.util.Assert;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
@@ -17,16 +22,19 @@ import java.util.concurrent.ConcurrentHashMap;
  * @version 1.0
  * @date 2020/6/29 16:01
  */
-public class DefaultListableBeanDefinitionFactory implements ConfigurableListableBeanFactory, BeanDefinitionRegister {
+public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFactory implements ConfigurableListableBeanFactory,
+        BeanDefinitionRegistry {
 
-    private static volatile DefaultListableBeanDefinitionFactory beanFactory;
+    private static volatile DefaultListableBeanFactory beanFactory;
     private final Map<String, BeanDefinition> beanDefinitionMap = new ConcurrentHashMap<String, BeanDefinition>(256);
     private final Map<String, String> aliasesDefinitionMap = new ConcurrentHashMap<String, String>(256);
     private final Map<String, Class<?>> typeDefinitionMap = new ConcurrentHashMap<String, Class<?>>(256);
     private final Map<Class<?>, Object> resolvableDependencies = new ConcurrentHashMap<Class<?>, Object>(256);
+    private volatile List<String> beanDefinitionNames = new ArrayList<String>(256);
 
-    private DefaultListableBeanDefinitionFactory() {
-    }
+    private volatile boolean configurationFrozen = false;
+
+    private DefaultListableBeanFactory() { }
 
     @Override
     public Object getBean(String name) throws BeansException {
@@ -90,56 +98,71 @@ public class DefaultListableBeanDefinitionFactory implements ConfigurableListabl
     @Override
     public void registerBeanDefinition(String name, BeanDefinition beanDefinition) {
         Assert.notNull(name, "'beanName' must not be null");
-        register(beanDefinition.getAliasesName(), beanDefinition);
+        register(((GenericBeanDefinition) beanDefinition).getId(), (AbstractBeanDefinition) beanDefinition);
     }
 
     /**
      * 注册bean
-     * @param aliases 名称
+     * @param id id注册
      * @param beanDefinition 被注册的bean对应的BeanDefinition
      */
-    private void register(String aliases, BeanDefinition beanDefinition) {
+    private void register(String id, AbstractBeanDefinition beanDefinition) {
         final String name = beanDefinition.getBean().getClass().getName();
         Object oldBean;
         if (containsBean(name)) {
             oldBean = beanDefinitionMap.get(name);
             if (oldBean == beanDefinition) return;
         }
-
         //加入到beanDefinitionMap中
-        beanDefinitionMap.put(aliases, beanDefinition);
+        beanDefinitionMap.put(id, beanDefinition);
         //根据BeanDefinition获取字节码
         final Class<?> clazz = beanDefinition.getBean().getClass();
         //将相应的数据添加进入对应的容器
-        typeDefinitionMap.put(name, clazz);
-        aliasesDefinitionMap.put(name, aliases);
+        typeDefinitionMap.put(id, clazz);
+        aliasesDefinitionMap.put(beanDefinition.getAliasesName(), id);
         resolvableDependencies.put(clazz, beanDefinition.getBean());
+        beanDefinitionNames.add(id);
     }
 
-    @Override
-    public void registerBeanDefinition(DefaultBeanDefinition defaultBeanDefinition) {
-        Assert.notNull(defaultBeanDefinition, "'beanName' must not be null");
-        register(defaultBeanDefinition.getAliasesName(), defaultBeanDefinition);
-    }
-
-    @Override
-    public void registerBeanDefinition(Class<?> clazz) {
-        DefaultBeanDefinition defaultBeanDefinition = DefaultBeanDefinition.initBeanDefinition(clazz);
-        register(defaultBeanDefinition.getAliasesName(), defaultBeanDefinition);
+    public BeanDefinition getBeanDefinition(String beanName) throws BeansException {
+        return beanDefinitionMap.get(beanName);
     }
 
     /**
      * 对外提供一个获取该工厂的接口
-     * @return DefaultBeanDefinition
+     * @return GenericBeanDefinition
      */
-    public static DefaultListableBeanDefinitionFactory getInstance() {
+    public static DefaultListableBeanFactory getInstance() {
         if (beanFactory == null) {
-            synchronized (DefaultBeanDefinition.class) {
+            synchronized (GenericBeanDefinition.class) {
                 if (beanFactory == null) {
-                    beanFactory = new DefaultListableBeanDefinitionFactory();
+                    beanFactory = new DefaultListableBeanFactory();
                 }
             }
         }
         return beanFactory;
+    }
+
+    @Override
+    public void freezeConfiguration() {
+        this.configurationFrozen = true;
+    }
+
+    @Override
+    public void preInstantiateSingleton() throws BeansException {
+        List<String> beanNames = new ArrayList<String>(this.beanDefinitionNames);
+        //寻找所有非懒加载的bean（便于简单，目前认为所有的bean都是singleton）
+        for (String beanName : beanNames) {
+            BeanDefinition beanDefinition = beanDefinitionMap.get(beanName);
+            if (beanDefinition.isSingleton()) {
+                //进行处理
+                super.getBean(beanName);
+            }
+        }
+    }
+
+    @Override
+    protected BeanFactory getBeanFactory() throws BeansException {
+        return this;
     }
 }

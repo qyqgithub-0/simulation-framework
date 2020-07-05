@@ -1,6 +1,6 @@
 package com.util;
 
-import com.bean.BeanDefinitionRegister;
+import com.bean.BeanDefinitionRegistry;
 import com.bean.impl.BeanDefinitionHolder;
 
 /**
@@ -12,12 +12,12 @@ public abstract class BeanDefinitionUtils {
 
     /**
      * 将BeanDefinition注册到register里面
-     * public class DefaultListableBeanDefinitionFactory implements
-     *                      ConfigurableListableBeanFactory, BeanDefinitionRegister
+     * public class DefaultListableBeanFactory implements
+     *                      ConfigurableListableBeanFactory, BeanDefinitionRegistry
      * @param definitionHolder
      * @param register
      */
-    public static void registerBeanDefinition(BeanDefinitionHolder definitionHolder, BeanDefinitionRegister register) {
+    public static void registerBeanDefinition(BeanDefinitionHolder definitionHolder, BeanDefinitionRegistry register) {
         String beanName = definitionHolder.getBeanName();
         register.registerBeanDefinition(beanName, definitionHolder.getBeanDefinition());
     }
