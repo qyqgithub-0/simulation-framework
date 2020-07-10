@@ -2,6 +2,7 @@ package com.using;
 
 
 import com.mybatis.io.Resources;
+import com.mybatis.parse.GenericTokenParser;
 import com.mybatis.session.SqlSession;
 import com.mybatis.session.SqlSessionFactory;
 import com.mybatis.session.SqlSessionFactoryBuilder;
@@ -13,6 +14,9 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * @author rkc
@@ -31,8 +35,20 @@ public class TestMybatis {
         SqlSession sqlSession = sqlSessionFactory.openSession();
         //获取mapper接口对象
         UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+
         //调用mapper接口方法操作数据库
-        User user = userMapper.selectByPrimaryKey(2);
-        System.out.println(user);
+//        User user = userMapper.selectByPrimaryKey(1);
+//        System.out.println(user.getId() + " " + user.getNick() + " " + user.getPhone() + " " + user.getEmail());
+//        System.out.println(userMapper.getClass());
+
+        User user = new User();
+        user.setId(1);
+        user.setNick("aaa");
+        user.setEmail("gg@qq.com");
+        user.setPhone("13987654321");
+
+//        userMapper.insert(user);
+//        userMapper.deleteByPrimaryKey(7);
+        userMapper.updateByPrimaryKey(user);
     }
 }

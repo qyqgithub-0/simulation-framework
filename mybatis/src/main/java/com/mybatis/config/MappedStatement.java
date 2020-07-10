@@ -1,5 +1,6 @@
 package com.mybatis.config;
 
+import com.mybatis.mapping.SqlCommandType;
 import lombok.Data;
 
 /**
@@ -16,5 +17,6 @@ public class MappedStatement {
     private String parameterType;
     private String resultType;
     private String sql;
+    private SqlCommandType sqlCommandType;
 
 }

@@ -42,14 +42,6 @@ public class Reflection {
             }
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            if (resultSet != null) {
-                try {
-                    resultSet.close();
-                } catch (SQLException throwable) {
-                    throwable.printStackTrace();
-                }
-            }
         }
     }
 }

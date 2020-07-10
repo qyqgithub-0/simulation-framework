@@ -11,7 +11,6 @@ import java.io.Serializable;
  * @date 2020/7/7 8:25
  */
 @Data
-@ToString
 public class User implements Serializable {
 
     private Integer id;

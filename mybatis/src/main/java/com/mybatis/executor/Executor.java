@@ -2,6 +2,9 @@ package com.mybatis.executor;
 
 import com.mybatis.config.MappedStatement;
 
+import java.sql.SQLException;
+import java.util.List;
+
 /**
  * @author rkc
  * @version 1.0
@@ -9,5 +12,7 @@ import com.mybatis.config.MappedStatement;
  */
 public interface Executor {
 
-    Object query(MappedStatement mappedStatement, Object parameter);
+    List<Object> query(MappedStatement mappedStatement, Object parameter);
+
+    int update(MappedStatement ms, Object parameter) throws SQLException;
 }
